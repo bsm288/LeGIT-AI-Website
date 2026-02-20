@@ -512,6 +512,19 @@ section {
 }
 
 /* Team Section */
+/* Team member profile images - circular, card-like */
+.member-avatar-img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    margin-bottom: 18px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 .team {
     background: var(--white);
 }

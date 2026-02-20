@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegitCode | LeGIT/AI Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">&lt;/&gt;</span>
+                <span>LegitCode</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#sponsors">Sponsors</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">CS486C Senior Capstone Project</div>
+            <h1 class="hero-title">
+                LeGIT<span class="highlight">/AI</span>
+            </h1>
+            <p class="hero-subtitle">Logical expression Generator Intended for TLA+ with Artificial Intelligence</p>
+            <p class="hero-description">
+                Transforming natural language requirements into formally verified TLA+ specifications 
+                using the power of AI and automated model checking.
+            </p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">Learn More</a>
+                <a href="#team" class="btn btn-secondary">Meet the Team</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="filename">spec.tla</span>
+                </div>
+                <pre class="code-content">
+<span class="keyword">VARIABLES</span> state, queue
+
+<span class="keyword">Init</span> ==
+    /\ state = "idle"
+    /\ queue = &lt;&lt;&gt;&gt;
+
+<span class="keyword">Next</span> ==
+    \/ <span class="comment">(* Process request *)</span>
+       /\ state = "idle"
+       /\ state' = "processing"
+    \/ <span class="comment">(* Complete *)</span>
+       /\ state = "processing"
+       /\ state' = "idle"
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About the Project</h2>
+                <p>Bridging the gap between requirements and formal verification</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        At SanDisk, quality is paramount. To enhance design assurance, this initiative 
+                        formally specifies designs using <strong>PlusCal</strong> and <strong>TLA+</strong> 
+                        (Temporal Logic of Actions), enabling rigorous formal verification through model checking.
+                    </p>
+                    <p>
+                        LeGIT/AI automates the challenging process of converting informal natural language 
+                        requirements (from NVMe and PCIe specifications) into mathematically rigorous TLA+ 
+                        formal specifications that can be verified by the TLC model checker.
+                    </p>
+                    <div class="tech-stack">
+                        <h3>Technology Stack</h3>
+                        <div class="tech-tags">
+                            <span class="tag">Rust</span>
+                            <span class="tag">TLA+</span>
+                            <span class="tag">PlusCal</span>
+                            <span class="tag">VS Code</span>
+                            <span class="tag">GitHub Copilot</span>
+                            <span class="tag">TLC Model Checker</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">📄</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Input</span>
+                            <span class="stat-value">PDF Specs</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🤖</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Processing</span>
+                            <span class="stat-value">AI Agent</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✓</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Output</span>
+                            <span class="stat-value">Verified TLA+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Key Features</h2>
+                <p>Streamlining formal specification development</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📑</div>
+                    <h3>PDF Parsing</h3>
+                    <p>Extract requirements context from NVMe and PCIe standard specification documents automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>AI-Powered Generation</h3>
+                    <p>Leverage GitHub Copilot Agent Mode to generate TLA+ definitions and formulas from natural language.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✏️</div>
+                    <h3>VS Code Integration</h3>
+                    <p>Seamlessly edit and refine generated TLA+ specifications within the familiar VS Code IDE.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Iterative Verification</h3>
+                    <p>Automatically verify drafts with TLC model checker for immediate feedback on inconsistencies.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Dictionary Building</h3>
+                    <p>Build a global dictionary of VARIABLES and CONSTANTS for consistent cross-specification references.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Formal Verification</h3>
+                    <p>Produce exhaustively model-checked TLA+ specifications ensuring correctness across all scenarios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section class="workflow">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>From requirements to verified specifications</p>
+            </div>
+            <div class="workflow-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Input Requirements</h3>
+                        <p>Load NVMe/PCIe specification PDFs</p>
+                    </div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>AI Extraction</h3>
+                        <p>Extract feature context via AI Agent</p>
+                    </div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Generate TLA+</h3>
+                        <p>Create specification drafts & CFG files</p>
+                    </div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Verify & Iterate</h3>
+                        <p>Model check and refine until verified</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet the Team</h2>
+                <p>The minds behind LegitCode</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img class="profile-photo" src="images/profile1.jpg" alt="Aryan Sharma">
+                    <h3>Aryan Sharma</h3>
+                    <p class="role">Team Member</p>
+                    <p class="university">Northern Arizona University</p>
+                </div>
+                <div class="team-card">
+                    <img class="profile-photo" src="images/profile2.jpg" alt="Kendahl Begay">
+                    <h3>Kendahl Begay</h3>
+                    <p class="role">Team Member</p>
+                    <p class="university">Northern Arizona University</p>
+                </div>
+                <div class="team-card">
+                    <img class="profile-photo" src="images/profile3.jpg" alt="Gordon Wray">
+                    <h3>Gordon Wray</h3>
+                    <p class="role">Team Member</p>
+                    <p class="university">Northern Arizona University</p>
+                </div>
+                <div class="team-card">
+                    <img class="profile-photo" src="images/profile4.jpg" alt="Brodric Martinez">
+                    <h3>Brodric Martinez</h3>
+                    <p class="role">Team Member</p>
+                    <p class="university">Northern Arizona University</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="sponsors">
+        <div class="container">
+            <div class="section-header">
+                <h2>Project Sponsors</h2>
+                <p>Industry partnership with SanDisk Corporation</p>
+            </div>
+            <div class="sponsors-content">
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">SanDisk</div>
+                    <div class="sponsor-info">
+                        <div class="sponsor-person">
+                            <h3>Chris Ortiz</h3>
+                            <p>Senior Technologist</p>
+                            <p class="dept">Tools & Infrastructure</p>
+                            <p class="dept">Engineering & Product Management</p>
+                        </div>
+                        <div class="sponsor-person">
+                            <h3>Rex Jackson</h3>
+                            <p>Vice President</p>
+                            <p class="dept">Tools & Infrastructure</p>
+                            <p class="dept">Engineering & Product Management</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tla-info">
+                <h3>About TLA+</h3>
+                <p>
+                    TLA+ was invented by <strong>Leslie Lamport</strong>, ACM Turing Award recipient. 
+                    It is used by major companies including AWS, Microsoft, Oracle, Google, LinkedIn, 
+                    MongoDB, Intel, ARM, Nvidia, and many more for formal verification of distributed systems.
+                </p>
+                <div class="tla-links">
+                    <a href="https://lamport.azurewebsites.net/tla/tla.html" target="_blank" class="tla-link">TLA+ Home</a>
+                    <a href="https://github.com/tlaplus" target="_blank" class="tla-link">GitHub</a>
+                    <a href="https://foundation.tlapl.us/" target="_blank" class="tla-link">Foundation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">&lt;/&gt;</span>
+                    <span>LegitCode</span>
+                </div>
+                <p>CS486C Senior Capstone Design in Computer Science</p>
+                <p class="copyright">© 2026 LegitCode Team | Northern Arizona University</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -511,66 +511,6 @@ section {
     opacity: 0.5;
 }
 
-/* Communication Section */
-.communication {
-    background: var(--white);
-}
-
-.communication-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-.communication-card {
-    padding: 36px;
-    background: var(--light);
-    border: 1px solid rgba(99, 102, 241, 0.12);
-    border-radius: var(--radius-lg);
-    transition: var(--transition);
-}
-
-.communication-card:hover {
-    transform: translateY(-8px);
-    background: var(--white);
-    box-shadow: var(--shadow-lg);
-}
-
-.communication-icon {
-    width: 56px;
-    height: 56px;
-    display: grid;
-    place-items: center;
-    margin-bottom: 20px;
-    border-radius: var(--radius);
-    background: var(--gradient);
-    font-size: 1.7rem;
-}
-
-.communication-card h3 {
-    margin-bottom: 12px;
-    color: var(--dark);
-    font-size: 1.25rem;
-}
-
-.communication-card p,
-.communication-card li {
-    color: var(--gray);
-    line-height: 1.7;
-}
-
-.communication-card p {
-    margin-bottom: 18px;
-}
-
-.communication-card ul {
-    padding-left: 20px;
-}
-
-.communication-card li + li {
-    margin-top: 8px;
-}
-
 /* Team Section */
 /* Team member profile images - circular, card-like */
 .member-avatar-img {
@@ -787,10 +727,6 @@ section {
 
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .communication-grid {
-        grid-template-columns: 1fr;
     }
 
     .team-grid {

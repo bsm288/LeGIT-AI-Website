@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Observe elements for animation
     const animateElements = document.querySelectorAll(
-        '.feature-card, .communication-card, .team-card, .stat-card, .step, .sponsor-card, .tla-info'
+        '.feature-card, .team-card, .stat-card, .step, .sponsor-card, .tla-info'
     );
 
     animateElements.forEach(el => {
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Add hover effect enhancement for cards
-    document.querySelectorAll('.feature-card, .communication-card, .team-card').forEach(card => {
+    document.querySelectorAll('.feature-card, .team-card').forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-8px) scale(1.02)';
         });

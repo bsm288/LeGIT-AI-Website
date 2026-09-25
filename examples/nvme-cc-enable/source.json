@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "source": {
+    "document": "NVM Express Base Specification",
+    "revision": "2.3 / 2025-08-01 Ratified",
+    "file": "NVM-Express-Base-Specification-Revision-2.3-2025.08.01-Ratified.pdf",
+    "sha256": "d1d3c5d2572ef04f89f67241d32f98e6d42e01de087fafa4b47e77f92e96e7a0"
+  },
+  "requirements": [
+    {
+      "id": "REQ-CC-EN",
+      "location": {
+        "section": "3.1.4.5",
+        "figure": "41",
+        "printed_page": 62,
+        "pdf_page": 86
+      },
+      "statement": "CC.EN is bit 0, RW, reset 0; setting EN enables the controller and clearing it initiates Controller Reset.",
+      "class": "normative",
+      "actor": "host",
+      "model_actions": [
+        "HostEnable",
+        "HostDisable"
+      ],
+      "checks": [
+        "TypeOK"
+      ],
+      "status": "partially modeled",
+      "note": "Only the handshake and selected preservation behavior are covered, not all reset effects."
+    },
+    {
+      "id": "REQ-NO-WORK",
+      "location": {
+        "section": "3.1.4.5",
+        "figure": "41",
+        "printed_page": 62,
+        "pdf_page": 86
+      },
+      "statement": "When EN is zero, the controller shall not process commands or post completion queue entries.",
+      "class": "normative",
+      "actor": "controller",
+      "model_actions": [
+        "ProcessCommand",
+        "CompleteCommand"
+      ],
+      "checks": [
+        "NoWorkWhileDisabled"
+      ],
+      "status": "modeled"
+    },
+    {
+      "id": "REQ-ADMIN-PRESERVE",
+      "location": {
+        "section": "3.1.4.5",
+        "figure": "41",
+        "printed_page": 62,
+        "pdf_page": 86
+      },
+      "statement": "Controller Level Reset caused by clearing EN does not affect Admin Queue properties AQA, ASQ, or ACQ.",
+      "class": "normative",
+      "actor": "controller",
+      "model_actions": [
+        "HostDisable",
+        "ControllerResetDone"
+      ],
+      "checks": [
+        "AdminPreservedOnReset",
+        "AdminWritesOnlyDisabled"
+      ],
+      "status": "modeled",
+      "note": "One opaque token represents the tuple of prevalidated Admin Queue properties."
+    },
+    {
+      "id": "REQ-ADMIN-WRITE",
+      "location": {
+        "section": "3.1.4.5",
+        "figure": "41",
+        "printed_page": 62,
+        "pdf_page": 86
+      },
+      "statement": "Admin Queue properties may only be modified while EN is zero.",
+      "class": "normative",
+      "actor": "host",
+      "model_actions": [
+        "HostConfigure"
+      ],
+      "checks": [
+        "AdminWritesOnlyDisabled"
+      ],
+      "status": "modeled"
+    },
+    {
+      "id": "REQ-RDY",
+      "location": {
+        "section": "3.1.4.6",
+        "figure": "42",
+        "printed_page": 64,
+        "pdf_page": 88
+      },
+      "statement": "RDY is set when ready after enable and cleared once ready for re-enable after EN is cleared; submission before readiness produces undefined results.",
+      "class": "normative",
+      "actor": "controller/host",
+      "model_actions": [
+        "ControllerReady",
+        "ControllerResetDone",
+        "SubmitCommand"
+      ],
+      "checks": [
+        "EnableEventuallyReady",
+        "ResetEventuallyDone"
+      ],
+      "status": "partially modeled",
+      "note": "Untimed progress requires explicit weak fairness; timeout compliance excluded."
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "ASSUME-NORMAL",
+      "statement": "One controller, normal operation; cooperative host avoids undefined EN writes; no subsystem/controller shutdown, fatal errors, firmware activation or power events."
+    },
+    {
+      "id": "ASSUME-INITIAL",
+      "statement": "Start after reset completion; Admin properties are represented by InitialAdminConfig, not claimed to have a hardware reset encoding."
+    },
+    {
+      "id": "ASSUME-ADMIN",
+      "statement": "Finite opaque tokens encode valid Admin Queue configurations; field widths, addresses and queue depths are abstracted."
+    },
+    {
+      "id": "ASSUME-COMMAND",
+      "statement": "One in-flight abstract command, idle/submitted/processed phases; reset discards in-flight work; persistent ghost counters observe work events and enforce basic counting consistency. Command opcodes, transport and cancellation protocol are excluded."
+    },
+    {
+      "id": "ASSUME-BOUND",
+      "statement": "MaxOperations caps total process events at 1, 2, or 3 for exploration; it is not a device limit. Enable/reset cycles can continue after the cap."
+    },
+    {
+      "id": "ASSUME-PROGRESS",
+      "statement": "Weak fairness for ControllerReady and ControllerResetDone; no timing bound and no unconditional command-completion liveness."
+    }
+  ],
+  "exclusions": [
+    "Full reset effects of sections 3.7.2 and 3.7.2.1",
+    "Queues, doorbells, transport state, payload and persistent-data guarantees",
+    "Shutdown exceptions, timeouts, namespace readiness and invalid-host behavior",
+    "All other NVMe requirements"
+  ],
+  "unresolved_dependencies": [],
+  "review_status": "candidate_for_client_semantic_review",
+  "screenshot_usage": "Formatting inspiration only; screenshot counter properties and thresholds are not NVMe source evidence."
+}

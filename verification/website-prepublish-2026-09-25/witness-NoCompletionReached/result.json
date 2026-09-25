@@ -1,0 +1,90 @@
+{
+  "started_utc": "2026-09-25T07:32:43.474735+00:00",
+  "finished_utc": "2026-09-25T07:32:44.982406+00:00",
+  "status": "INVARIANT_VIOLATION",
+  "exit_code": 12,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python_version": "3.13.7",
+  "java_version": "openjdk version \"25.0.2\" 2026-01-20 LTS\nOpenJDK Runtime Environment Temurin-25.0.2+10 (build 25.0.2+10-LTS)\nOpenJDK 64-Bit Server VM Temurin-25.0.2+10 (build 25.0.2+10-LTS, mixed mode, sharing)",
+  "jar_sha256": "32d64fbbc464559fc7192341b27b885fa4eb6b92d1648d2b49fb9cdcb7aacf81",
+  "tlc_version": "TLC2 Version 2026.09.23.154203 (rev: 4260e47)",
+  "command": [
+    "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.2.10-hotspot\\bin\\java.EXE",
+    "-Xmx512m",
+    "-XX:+UseParallelGC",
+    "-cp",
+    "C:\\Users\\aryan\\.vscode\\extensions\\tlaplus.vscode-ide-2026.9.231551\\tools\\tla2tools.jar",
+    "tlc2.TLC",
+    "-workers",
+    "1",
+    "-seed",
+    "1",
+    "-fp",
+    "0",
+    "-config",
+    "NVMeCCEnable.cfg",
+    "-metadir",
+    "states",
+    "NVMeCCEnable.tla"
+  ],
+  "working_directory": "isolated temporary copy of inputs/",
+  "inputs": {
+    "NVMeCCEnable.cfg": "08deb15eaa232056710a0eee532dac576c2b0c335eb484e8b0d75402e5376d70",
+    "NVMeCCEnable.tla": "f987900d49320a8bc7896ffceb6e9bbd89dea75407347f8eb779e9916f8c4973"
+  },
+  "checks": [
+    [
+      "INVARIANT",
+      "TypeOK"
+    ],
+    [
+      "INVARIANT",
+      "CompleteCountBounded"
+    ],
+    [
+      "PROPERTY",
+      "NoWorkWhileDisabled"
+    ],
+    [
+      "PROPERTY",
+      "AdminPreservedOnReset"
+    ],
+    [
+      "PROPERTY",
+      "AdminWritesOnlyDisabled"
+    ],
+    [
+      "PROPERTY",
+      "EnableEventuallyReady"
+    ],
+    [
+      "PROPERTY",
+      "ResetEventuallyDone"
+    ],
+    [
+      "INVARIANT",
+      "NoCompletionReached"
+    ]
+  ],
+  "bounds": [
+    [
+      "MaxOperations",
+      "2"
+    ],
+    [
+      "AdminConfigValues",
+      "{cfgA, cfgB}"
+    ],
+    [
+      "InitialAdminConfig",
+      "cfgA"
+    ]
+  ],
+  "states": {
+    "generated": 19,
+    "distinct": 13,
+    "remaining": 2
+  },
+  "depth": 6,
+  "log": "tlc.log"
+}

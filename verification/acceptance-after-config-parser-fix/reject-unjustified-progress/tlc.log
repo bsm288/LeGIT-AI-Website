@@ -1,0 +1,109 @@
+TLC2 Version 2026.09.23.154203 (rev: 4260e47)
+Running breadth-first search Model-Checking with fp 0 and seed 1 with 1 worker on 16 cores with 455MB heap and 64MB offheap memory [pid: 4536] (Windows 11 10.0 amd64, Eclipse Adoptium 25.0.2 64bit, MSBDiskFPSet, DiskStateQueue).
+Parsing file C:\Users\aryan\AppData\Local\Temp\legit-tlc-a50mocrx\NVMeCCEnable.tla
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-3924646781744876316\Naturals.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-3924646781744876316\FiniteSets.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-3924646781744876316\_TLCTrace.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/_TLCTrace.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-3924646781744876316\Sequences.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-3924646781744876316\TLC.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-3924646781744876316\TLCExt.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/TLCExt.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-3924646781744876316\Integers.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/Integers.tla)
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module Integers
+Semantic processing of module TLCExt
+Semantic processing of module _TLCTrace
+Semantic processing of module NVMeCCEnable
+Linting of module TLCExt
+Linting of module _TLCTrace
+Linting of module NVMeCCEnable
+Starting... (2026-09-24 23:37:34)
+Implied-temporal checking--satisfiability problem has 2 branches.
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-09-24 23:37:34.
+Progress(16) at 2026-09-24 23:37:35: 103 states generated, 60 distinct states found, 0 states left on queue.
+Checking 2 branches of temporal properties for the complete state space with 120 total distinct states at (2026-09-24 23:37:35)
+Error: Temporal property EnableEventuallyReady was violated.
+
+Error: The following behavior constitutes a counter-example:
+
+State 1: <Initial predicate>
+/\ cstsRdy = 0
+/\ commandPhase = "idle"
+/\ ccEn = 0
+/\ processedCount = 0
+/\ adminConfig = cfgA
+/\ completedCount = 0
+
+State 2: <HostConfigure line 104, col 5 to line 107, col 80 of module NVMeCCEnable>
+/\ cstsRdy = 0
+/\ commandPhase = "idle"
+/\ ccEn = 0
+/\ processedCount = 0
+/\ adminConfig = cfgB
+/\ completedCount = 0
+
+State 3: <HostEnable line 67, col 5 to line 71, col 52 of module NVMeCCEnable>
+/\ cstsRdy = 0
+/\ commandPhase = "idle"
+/\ ccEn = 1
+/\ processedCount = 0
+/\ adminConfig = cfgB
+/\ completedCount = 0
+
+State 4: <ControllerReady line 76, col 5 to line 80, col 52 of module NVMeCCEnable>
+/\ cstsRdy = 1
+/\ commandPhase = "idle"
+/\ ccEn = 1
+/\ processedCount = 0
+/\ adminConfig = cfgB
+/\ completedCount = 0
+
+State 5: <SubmitCommand line 113, col 5 to line 118, col 79 of module NVMeCCEnable>
+/\ cstsRdy = 1
+/\ commandPhase = "submitted"
+/\ ccEn = 1
+/\ processedCount = 0
+/\ adminConfig = cfgB
+/\ completedCount = 0
+
+State 6: <ProcessCommand line 123, col 5 to line 129, col 63 of module NVMeCCEnable>
+/\ cstsRdy = 1
+/\ commandPhase = "processed"
+/\ ccEn = 1
+/\ processedCount = 1
+/\ adminConfig = cfgB
+/\ completedCount = 0
+
+State 7: <HostDisable line 86, col 5 to line 90, col 73 of module NVMeCCEnable>
+/\ cstsRdy = 1
+/\ commandPhase = "idle"
+/\ ccEn = 0
+/\ processedCount = 1
+/\ adminConfig = cfgB
+/\ completedCount = 0
+
+State 8: <ControllerResetDone line 95, col 5 to line 99, col 52 of module NVMeCCEnable>
+/\ cstsRdy = 0
+/\ commandPhase = "idle"
+/\ ccEn = 0
+/\ processedCount = 1
+/\ adminConfig = cfgB
+/\ completedCount = 0
+
+State 9: <HostEnable line 67, col 5 to line 71, col 52 of module NVMeCCEnable>
+/\ cstsRdy = 0
+/\ commandPhase = "idle"
+/\ ccEn = 1
+/\ processedCount = 1
+/\ adminConfig = cfgB
+/\ completedCount = 0
+
+State 10: Stuttering
+Finished checking temporal properties in 00s at 2026-09-24 23:37:35
+103 states generated, 60 distinct states found, 0 states left on queue.
+The depth of the complete state graph search is 16.
+Finished in 00s at (2026-09-24 23:37:35)
+Trace exploration spec path: .\NVMeCCEnable_TTrace_1790318254.tla

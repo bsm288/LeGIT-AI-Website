@@ -1,0 +1,94 @@
+{
+  "benchmark_id": "nvme-cc-en-v1",
+  "model_label": "gpt-6-sol",
+  "score": 100,
+  "maximum": 100,
+  "notes": [],
+  "candidate_hashes": {
+    "Candidate.cfg": "c810ef5bcbe3a74c6e77709b24d44fa42524ac8cb7eb43f4cf86d161a810b9cf",
+    "Candidate.tla": "75dbae71ade72f189311278cb7f3acec4ae38eee5cc49d3cd04709106d7aa03e",
+    "README.md": "c5dbdfb6dd3ed18a88eebcad6ba7137e5ee16f8eb7f2698f3b112b46cc2b9ae0",
+    "source.json": "0e3759847809ddad7ee64dbb7d10466adb303addb6ed47685dcd03e382d8a7da",
+    "tlc.log": "413ca987d577ba47f7aee2460f9fc871e9d1717650e5228c5a3187701f9012f9"
+  },
+  "candidate_evidence": "candidate/",
+  "tlc": {
+    "started_utc": "2026-09-25T06:38:26.335324+00:00",
+    "finished_utc": "2026-09-25T06:38:27.977915+00:00",
+    "status": "PASS",
+    "exit_code": 0,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.13.7",
+    "java_version": "openjdk version \"25.0.2\" 2026-01-20 LTS\nOpenJDK Runtime Environment Temurin-25.0.2+10 (build 25.0.2+10-LTS)\nOpenJDK 64-Bit Server VM Temurin-25.0.2+10 (build 25.0.2+10-LTS, mixed mode, sharing)",
+    "jar_sha256": "32d64fbbc464559fc7192341b27b885fa4eb6b92d1648d2b49fb9cdcb7aacf81",
+    "tlc_version": "TLC2 Version 2026.09.23.154203 (rev: 4260e47)",
+    "command": [
+      "C:\\Program Files\\Eclipse Adoptium\\jdk-25.0.2.10-hotspot\\bin\\java.EXE",
+      "-Xmx512m",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "C:\\Users\\aryan\\.vscode\\extensions\\tlaplus.vscode-ide-2026.9.231551\\tools\\tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "1",
+      "-fp",
+      "0",
+      "-config",
+      "Candidate.cfg",
+      "-metadir",
+      "states",
+      "Candidate.tla"
+    ],
+    "working_directory": "isolated temporary copy of inputs/",
+    "inputs": {
+      "Candidate.cfg": "c810ef5bcbe3a74c6e77709b24d44fa42524ac8cb7eb43f4cf86d161a810b9cf",
+      "Candidate.tla": "75dbae71ade72f189311278cb7f3acec4ae38eee5cc49d3cd04709106d7aa03e"
+    },
+    "checks": [
+      [
+        "INVARIANT",
+        "TypeOK"
+      ],
+      [
+        "PROPERTY",
+        "NoWorkWhileDisabled"
+      ],
+      [
+        "PROPERTY",
+        "AdminPreservedOnReset"
+      ],
+      [
+        "PROPERTY",
+        "AdminWritesOnlyDisabled"
+      ],
+      [
+        "PROPERTY",
+        "EnableEventuallyReady"
+      ],
+      [
+        "PROPERTY",
+        "ResetEventuallyDone"
+      ]
+    ],
+    "bounds": [],
+    "states": {
+      "generated": 36,
+      "distinct": 18,
+      "remaining": 0
+    },
+    "depth": 7,
+    "log": "tlc.log"
+  },
+  "manual_review": {
+    "source_faithfulness_0_to_5": null,
+    "property_correctness_0_to_5": null,
+    "abstraction_disclosure_0_to_5": null,
+    "identifier_consistency_0_to_5": null,
+    "reviewer_1": null,
+    "reviewer_2": null,
+    "disagreements": null
+  },
+  "limitation": "Automated score measures artifact/source/config conformance and TLC execution. It is not a semantic accuracy score."
+}

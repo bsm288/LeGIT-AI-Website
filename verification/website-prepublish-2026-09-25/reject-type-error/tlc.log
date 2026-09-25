@@ -1,0 +1,71 @@
+TLC2 Version 2026.09.23.154203 (rev: 4260e47)
+Running breadth-first search Model-Checking with fp 0 and seed 1 with 1 worker on 16 cores with 455MB heap and 64MB offheap memory [pid: 13772] (Windows 11 10.0 amd64, Eclipse Adoptium 25.0.2 64bit, MSBDiskFPSet, DiskStateQueue).
+Parsing file C:\Users\aryan\AppData\Local\Temp\legit-tlc-rmmlf2a4\NVMeCCEnable.tla
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-325190189994683127\Naturals.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-325190189994683127\FiniteSets.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-325190189994683127\_TLCTrace.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/_TLCTrace.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-325190189994683127\Sequences.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-325190189994683127\TLC.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-325190189994683127\TLCExt.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/TLCExt.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-325190189994683127\Integers.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/Integers.tla)
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module Integers
+Semantic processing of module TLCExt
+Semantic processing of module _TLCTrace
+Semantic processing of module NVMeCCEnable
+Linting of module TLCExt
+Linting of module _TLCTrace
+Linting of module NVMeCCEnable
+Starting... (2026-09-25 00:32:36)
+Implied-temporal checking--satisfiability problem has 2 branches.
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-09-25 00:32:37.
+Error: Invariant TypeOK is violated.
+Error: The behavior up to this point is:
+State 1: <Initial predicate>
+/\ cstsRdy = 0
+/\ commandPhase = "idle"
+/\ ccEn = 0
+/\ processedCount = 0
+/\ adminConfig = cfgA
+/\ completedCount = 0
+
+State 2: <HostEnable line 67, col 5 to line 71, col 52 of module NVMeCCEnable>
+/\ cstsRdy = 0
+/\ commandPhase = "idle"
+/\ ccEn = 1
+/\ processedCount = 0
+/\ adminConfig = cfgA
+/\ completedCount = 0
+
+State 3: <ControllerReady line 76, col 5 to line 80, col 52 of module NVMeCCEnable>
+/\ cstsRdy = 1
+/\ commandPhase = "idle"
+/\ ccEn = 1
+/\ processedCount = 0
+/\ adminConfig = cfgA
+/\ completedCount = 0
+
+State 4: <SubmitCommand line 113, col 5 to line 118, col 79 of module NVMeCCEnable>
+/\ cstsRdy = 1
+/\ commandPhase = "submitted"
+/\ ccEn = 1
+/\ processedCount = 0
+/\ adminConfig = cfgA
+/\ completedCount = 0
+
+State 5: <ProcessCommand line 123, col 5 to line 129, col 63 of module NVMeCCEnable>
+/\ cstsRdy = 1
+/\ commandPhase = "processed"
+/\ ccEn = 1
+/\ processedCount = 3
+/\ adminConfig = cfgA
+/\ completedCount = 0
+
+13 states generated, 10 distinct states found, 2 states left on queue.
+The depth of the complete state graph search is 5.
+Finished in 01s at (2026-09-25 00:32:37)
+Trace exploration spec path: .\NVMeCCEnable_TTrace_1790321556.tla

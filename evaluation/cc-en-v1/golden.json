@@ -1,0 +1,95 @@
+{
+  "benchmark_id": "nvme-cc-en-v1",
+  "schema_version": 1,
+  "source": {
+    "document": "NVM Express Base Specification",
+    "revision": "2.3 / 2025-08-01 Ratified",
+    "file": "NVM-Express-Base-Specification-Revision-2.3-2025.08.01-Ratified.pdf",
+    "sha256": "d1d3c5d2572ef04f89f67241d32f98e6d42e01de087fafa4b47e77f92e96e7a0"
+  },
+  "requirements": [
+    {
+      "id": "REQ-CC-EN",
+      "location": {
+        "section": "3.1.4.5",
+        "figure": "41",
+        "printed_page": 62,
+        "pdf_page": 86
+      },
+      "required_checks": [
+        "TypeOK"
+      ]
+    },
+    {
+      "id": "REQ-NO-WORK",
+      "location": {
+        "section": "3.1.4.5",
+        "figure": "41",
+        "printed_page": 62,
+        "pdf_page": 86
+      },
+      "required_checks": [
+        "NoWorkWhileDisabled"
+      ]
+    },
+    {
+      "id": "REQ-ADMIN-PRESERVE",
+      "location": {
+        "section": "3.1.4.5",
+        "figure": "41",
+        "printed_page": 62,
+        "pdf_page": 86
+      },
+      "required_checks": [
+        "AdminPreservedOnReset"
+      ]
+    },
+    {
+      "id": "REQ-ADMIN-WRITE",
+      "location": {
+        "section": "3.1.4.5",
+        "figure": "41",
+        "printed_page": 62,
+        "pdf_page": 86
+      },
+      "required_checks": [
+        "AdminWritesOnlyDisabled"
+      ]
+    },
+    {
+      "id": "REQ-RDY",
+      "location": {
+        "section": "3.1.4.6",
+        "figure": "42",
+        "printed_page": 64,
+        "pdf_page": 88
+      },
+      "required_checks": [
+        "EnableEventuallyReady",
+        "ResetEventuallyDone"
+      ]
+    }
+  ],
+  "required_assumption_or_exclusion_topics": [
+    "shutdown",
+    "fatal",
+    "timeout",
+    "transport",
+    "reset",
+    "undefined"
+  ],
+  "required_artifacts": [
+    "Candidate.tla",
+    "Candidate.cfg",
+    "source.json",
+    "README.md"
+  ],
+  "required_cfg_checks": [
+    "TypeOK",
+    "NoWorkWhileDisabled",
+    "AdminPreservedOnReset",
+    "AdminWritesOnlyDisabled",
+    "EnableEventuallyReady",
+    "ResetEventuallyDone"
+  ]
+}

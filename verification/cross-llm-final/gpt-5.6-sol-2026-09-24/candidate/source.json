@@ -1,0 +1,89 @@
+{
+  "benchmark_id": "nvme-cc-en-v1",
+  "schema_version": 1,
+  "source": {
+    "document": "NVM Express Base Specification",
+    "revision": "2.3 / 2025-08-01 Ratified",
+    "file": "NVM-Express-Base-Specification-Revision-2.3-2025.08.01-Ratified.pdf",
+    "sha256": "d1d3c5d2572ef04f89f67241d32f98e6d42e01de087fafa4b47e77f92e96e7a0"
+  },
+  "requirements": [
+    {
+      "id": "REQ-CC-EN",
+      "location": {"section": "3.1.4.5", "figure": "41", "printed_page": 62, "pdf_page": 86},
+      "statement": "CC.EN is a read-write bit with reset value zero; setting it enables command processing and clearing it initiates Controller Reset.",
+      "class": "normative",
+      "actor": "host and controller",
+      "preconditions": ["normal operation", "defined host transition"],
+      "model_actions": ["HostEnable", "HostDisable"],
+      "checks": ["TypeOK"],
+      "required_checks": ["TypeOK"],
+      "status": "modeled"
+    },
+    {
+      "id": "REQ-NO-WORK",
+      "location": {"section": "3.1.4.5", "figure": "41", "printed_page": 62, "pdf_page": 86},
+      "statement": "While CC.EN is zero, the controller shall not process commands or post completion queue entries.",
+      "class": "normative",
+      "actor": "controller",
+      "preconditions": ["CC.EN equals zero"],
+      "model_actions": ["ProcessCommand", "PostCompletion"],
+      "checks": ["NoWorkWhileDisabled"],
+      "required_checks": ["NoWorkWhileDisabled"],
+      "status": "modeled"
+    },
+    {
+      "id": "REQ-ADMIN-PRESERVE",
+      "location": {"section": "3.1.4.5", "figure": "41", "printed_page": 62, "pdf_page": 86},
+      "statement": "Controller Reset caused by clearing CC.EN does not affect the Admin Queue properties AQA, ASQ, or ACQ.",
+      "class": "normative",
+      "actor": "controller",
+      "preconditions": ["defined CC.EN one-to-zero transition"],
+      "model_actions": ["HostDisable", "FinishReset"],
+      "checks": ["AdminPreservedOnReset"],
+      "required_checks": ["AdminPreservedOnReset"],
+      "status": "modeled"
+    },
+    {
+      "id": "REQ-ADMIN-WRITE",
+      "location": {"section": "3.1.4.5", "figure": "41", "printed_page": 62, "pdf_page": 86},
+      "statement": "Admin Queue properties AQA, ASQ, and ACQ are only allowed to be modified while CC.EN is zero.",
+      "class": "normative",
+      "actor": "host",
+      "preconditions": [],
+      "model_actions": ["AdminWrite"],
+      "checks": ["AdminWritesOnlyDisabled"],
+      "required_checks": ["AdminWritesOnlyDisabled"],
+      "status": "modeled"
+    },
+    {
+      "id": "REQ-RDY",
+      "location": {"section": "3.1.4.6", "figure": "42", "printed_page": 64, "pdf_page": 88},
+      "statement": "After CC.EN is set, CSTS.RDY becomes one when ready to process; after CC.EN is cleared, CSTS.RDY becomes zero once ready to be re-enabled.",
+      "class": "normative",
+      "actor": "controller",
+      "preconditions": ["normal operation", "progress fairness assumption"],
+      "model_actions": ["BecomeReady", "FinishReset"],
+      "checks": ["EnableEventuallyReady", "ResetEventuallyDone"],
+      "required_checks": ["EnableEventuallyReady", "ResetEventuallyDone"],
+      "status": "modeled"
+    }
+  ],
+  "assumptions": [
+    {"id": "ASSUME-NORMAL", "topic": "shutdown", "statement": "NVM Subsystem Shutdown and controller shutdown are absent."},
+    {"id": "ASSUME-NO-FATAL", "topic": "fatal", "statement": "No controller fatal error occurs."},
+    {"id": "ASSUME-PROGRESS", "topic": "timeout", "statement": "Continuously enabled readiness transitions eventually occur; CAP.TO timing is abstracted away."},
+    {"id": "ASSUME-FINITE", "topic": "bounds", "statement": "Ghost histories are bounded by MaxWork, tested at 2, and Admin Queue properties use two opaque values."}
+  ],
+  "exclusions": [
+    {"topic": "transport", "statement": "Transport-specific state and behavior are not modeled."},
+    {"topic": "reset", "statement": "Full Controller Level Reset effects beyond CC.EN, CSTS.RDY, and Admin Queue property preservation are excluded."},
+    {"topic": "undefined", "statement": "Host writes identified by the source as producing undefined results are excluded."},
+    {"topic": "shutdown", "statement": "Shutdown-specific CC.EN and CSTS.RDY behavior is excluded."},
+    {"topic": "fatal", "statement": "CSTS.CFS and fatal-error behavior are excluded."}
+  ],
+  "unresolved_dependencies": [
+    {"topic": "timeout", "statement": "CAP.TO and referenced timing sections were not supplied; no real-time bound is claimed."},
+    {"topic": "reset", "statement": "Sections 3.7.2 and 3.7.2.1 were not supplied; detailed reset effects are not claimed."}
+  ]
+}

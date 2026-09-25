@@ -1,0 +1,90 @@
+{
+  "benchmark_id": "nvme-cc-en-v1",
+  "schema_version": 1,
+  "source": {
+    "document": "NVM Express Base Specification",
+    "revision": "2.3 / 2025-08-01 Ratified",
+    "file": "NVM-Express-Base-Specification-Revision-2.3-2025.08.01-Ratified.pdf",
+    "sha256": "d1d3c5d2572ef04f89f67241d32f98e6d42e01de087fafa4b47e77f92e96e7a0"
+  },
+  "requirements": [
+    {
+      "id": "REQ-CC-EN",
+      "location": {"section": "3.1.4.5", "figure": "41", "printed_page": 62, "pdf_page": 86},
+      "statement": "CC.EN is a read/write bit with reset value zero; a legal zero-to-one write enables normal controller operation.",
+      "class": "normative",
+      "actor": "host",
+      "preconditions": ["CSTS.RDY is zero for a defined zero-to-one write"],
+      "model_actions": ["HostEnable"],
+      "required_checks": ["TypeOK"],
+      "checks": ["TypeOK"],
+      "status": "modeled"
+    },
+    {
+      "id": "REQ-NO-WORK",
+      "location": {"section": "3.1.4.5", "figure": "41", "printed_page": 62, "pdf_page": 86},
+      "statement": "While CC.EN is zero, the controller shall not process commands or post Completion Queue entries.",
+      "class": "normative",
+      "actor": "controller",
+      "preconditions": ["CC.EN is zero"],
+      "model_actions": ["ProcessCommand", "PostCompletion"],
+      "required_checks": ["NoWorkWhileDisabled"],
+      "checks": ["NoWorkWhileDisabled"],
+      "status": "modeled"
+    },
+    {
+      "id": "REQ-ADMIN-PRESERVE",
+      "location": {"section": "3.1.4.5", "figure": "41", "printed_page": 62, "pdf_page": 86},
+      "statement": "Clearing CC.EN from one to zero initiates a Controller Reset whose Controller Level Reset does not affect AQA, ASQ, or ACQ.",
+      "class": "normative",
+      "actor": "controller",
+      "preconditions": ["CC.EN changes from one to zero in normal operation"],
+      "model_actions": ["HostDisable", "ControllerResetDone"],
+      "required_checks": ["AdminPreservedOnReset"],
+      "checks": ["AdminPreservedOnReset"],
+      "status": "modeled"
+    },
+    {
+      "id": "REQ-ADMIN-WRITE",
+      "location": {"section": "3.1.4.5", "figure": "41", "printed_page": 62, "pdf_page": 86},
+      "statement": "The Admin Queue properties AQA, ASQ, and ACQ are only allowed to be modified when CC.EN is zero.",
+      "class": "normative",
+      "actor": "host",
+      "preconditions": ["CC.EN is zero"],
+      "model_actions": ["HostWriteAdmin"],
+      "required_checks": ["AdminWritesOnlyDisabled"],
+      "checks": ["AdminWritesOnlyDisabled"],
+      "status": "modeled"
+    },
+    {
+      "id": "REQ-RDY",
+      "location": {"section": "3.1.4.6", "figure": "42", "printed_page": 64, "pdf_page": 88},
+      "statement": "After CC.EN is set, CSTS.RDY indicates readiness to process commands; after CC.EN is cleared, RDY clears once the controller is ready to be re-enabled.",
+      "class": "normative",
+      "actor": "controller",
+      "preconditions": ["Normal operation without shutdown or fatal error", "Controller progress fairness"],
+      "model_actions": ["ControllerReady", "ControllerResetDone"],
+      "required_checks": ["EnableEventuallyReady", "ResetEventuallyDone"],
+      "checks": ["EnableEventuallyReady", "ResetEventuallyDone"],
+      "status": "modeled"
+    }
+  ],
+  "assumptions": [
+    {"id": "ASSUME-NORMAL", "statement": "The environment makes only defined host writes. Enabling occurs only with RDY=0, clearing EN occurs only with RDY=1, and commands are processed only after RDY=1. The source's host recommendation to wait for RDY is used as an environment assumption."},
+    {"id": "ASSUME-PROGRESS", "statement": "During normal operation, continuously enabled controller-ready and reset-complete steps eventually occur; represented by weak fairness for ControllerReady and ControllerResetDone. This abstracts unspecified real-time bounds."},
+    {"id": "ASSUME-FINITE", "statement": "AQA/ASQ/ACQ are represented by two distinct opaque configurations. At most two processed and two posted events are tracked per enable interval; counts are ghost history, reset when a new Controller Reset starts."},
+    {"id": "ASSUME-INIT", "statement": "The model starts in a disabled, ready-to-enable normal state. Initial Admin Queue configuration is nondeterministic because it is not specified on these source pages."}
+  ],
+  "exclusions": [
+    {"topic": "shutdown", "statement": "Controller and NVM Subsystem Shutdown exceptions on the cited pages are outside this normal-operation model."},
+    {"topic": "fatal", "statement": "Fatal controller error status and error recovery are outside this model."},
+    {"topic": "timeout", "statement": "CAP.TO timing, elapsed time, and timeout behavior are outside this untimed model."},
+    {"topic": "transport", "statement": "Transport-specific registers and state are outside this model."},
+    {"topic": "reset", "statement": "Full Controller Level Reset effects on I/O queues, internal state, and data integrity are outside this five-variable abstraction; only Admin Queue property preservation and RDY completion are represented."},
+    {"topic": "undefined", "statement": "Undefined-result host writes and commands submitted before RDY are excluded from the defined-behavior model."}
+  ],
+  "unresolved_dependencies": [
+    "The detailed Controller Level Reset effects are delegated by Figure 41 to section 3.7.2, which is outside the supplied pages.",
+    "The timing definition is delegated by Figure 42 to CAP.TO in sections 3.5.3 and 3.5.4, which are outside the supplied pages."
+  ]
+}

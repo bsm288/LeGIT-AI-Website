@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "scope": "Initial demo entries; legacy client models not yet inventoried",
+  "entries": [
+    {
+      "canonical": "AdminConfigValues",
+      "kind": "CONSTANT",
+      "role": "abstraction",
+      "meaning": "Finite nonempty domain of opaque, prevalidated Admin Queue configuration tuples",
+      "domain": "finite set",
+      "units": "configuration tokens",
+      "owner": "model configuration",
+      "initial": "assigned in .cfg",
+      "reset": "constant across all states",
+      "legal_domain": "finite nonempty set",
+      "tested_values": [
+        "{cfgA, cfgB}"
+      ],
+      "abstraction_reason": "Abstracts AQA/ASQ/ACQ fields and addresses",
+      "sources": [
+        {
+          "requirement_id": "ASSUME-ADMIN",
+          "source_record": "examples/nvme-cc-enable/source.json"
+        }
+      ],
+      "model_refs": [
+        "examples/nvme-cc-enable/NVMeCCEnable.tla:AdminConfigValues"
+      ],
+      "aliases": [],
+      "status": "model_checked",
+      "verification": "verification/acceptance-final-2026-09-24/valid-bound-2/result.json"
+    },
+    {
+      "canonical": "InitialAdminConfig",
+      "kind": "CONSTANT",
+      "role": "abstraction",
+      "meaning": "Initial abstract Admin Queue configuration token",
+      "domain": "AdminConfigValues",
+      "units": "configuration token",
+      "owner": "model configuration",
+      "initial": "assigned in .cfg",
+      "reset": "constant; not a claim of hardware reset encoding",
+      "legal_domain": "AdminConfigValues",
+      "tested_values": [
+        "cfgA",
+        "cfgB"
+      ],
+      "abstraction_reason": "Models alternative valid initial configurations",
+      "sources": [
+        {
+          "requirement_id": "ASSUME-INITIAL",
+          "source_record": "examples/nvme-cc-enable/source.json"
+        }
+      ],
+      "model_refs": [
+        "examples/nvme-cc-enable/NVMeCCEnable.tla:InitialAdminConfig"
+      ],
+      "aliases": [],
+      "status": "model_checked",
+      "verification": "verification/acceptance-final-2026-09-24/valid-bound-2/result.json"
+    },
+    {
+      "canonical": "MaxOperations",
+      "kind": "CONSTANT",
+      "role": "abstraction",
+      "meaning": "Lifetime processing-event budget for finite exploration",
+      "domain": "positive integer",
+      "units": "events",
+      "owner": "model configuration",
+      "initial": "assigned in .cfg",
+      "reset": "constant across all states",
+      "legal_domain": "Nat \\ {0}",
+      "tested_values": [
+        1,
+        2,
+        3
+      ],
+      "abstraction_reason": "Bounds persistent observer counters; not a device capacity",
+      "sources": [
+        {
+          "requirement_id": "ASSUME-BOUND",
+          "source_record": "examples/nvme-cc-enable/source.json"
+        }
+      ],
+      "model_refs": [
+        "examples/nvme-cc-enable/NVMeCCEnable.tla:MaxOperations"
+      ],
+      "aliases": [],
+      "status": "model_checked",
+      "verification": "verification/acceptance-final-2026-09-24/valid-bound-2/result.json"
+    },
+    {
+      "canonical": "adminConfig",
+      "kind": "VARIABLE",
+      "role": "abstraction",
+      "meaning": "Opaque tuple of Admin Queue properties preserved across reset",
+      "domain": "AdminConfigValues",
+      "units": "configuration token",
+      "owner": "host while ccEn=0",
+      "initial": "InitialAdminConfig",
+      "reset": "unchanged by HostDisable and ControllerResetDone",
+      "sources": [
+        {
+          "requirement_id": "REQ-ADMIN-PRESERVE",
+          "source_record": "examples/nvme-cc-enable/source.json"
+        }
+      ],
+      "model_refs": [
+        "examples/nvme-cc-enable/NVMeCCEnable.tla:adminConfig"
+      ],
+      "aliases": [],
+      "status": "model_checked",
+      "verification": "verification/acceptance-final-2026-09-24/valid-bound-2/result.json"
+    },
+    {
+      "canonical": "ccEn",
+      "kind": "VARIABLE",
+      "role": "hardware",
+      "meaning": "Controller Configuration Enable bit",
+      "domain": "{0, 1}",
+      "units": "bit",
+      "owner": "host in this model",
+      "initial": "0",
+      "reset": "HostDisable sets 0; remains 0 until HostEnable",
+      "sources": [
+        {
+          "requirement_id": "REQ-CC-EN",
+          "source_record": "examples/nvme-cc-enable/source.json"
+        }
+      ],
+      "model_refs": [
+        "examples/nvme-cc-enable/NVMeCCEnable.tla:ccEn"
+      ],
+      "aliases": [],
+      "status": "model_checked",
+      "verification": "verification/acceptance-final-2026-09-24/valid-bound-2/result.json"
+    },
+    {
+      "canonical": "commandPhase",
+      "kind": "VARIABLE",
+      "role": "ghost",
+      "meaning": "Phase of one abstract in-flight command",
+      "domain": "{\"idle\", \"submitted\", \"processed\"}",
+      "units": "phase",
+      "owner": "host submission/controller processing/completion",
+      "initial": "\"idle\"",
+      "reset": "\"idle\" on HostDisable (abstraction)",
+      "sources": [
+        {
+          "requirement_id": "ASSUME-COMMAND",
+          "source_record": "examples/nvme-cc-enable/source.json"
+        }
+      ],
+      "model_refs": [
+        "examples/nvme-cc-enable/NVMeCCEnable.tla:commandPhase"
+      ],
+      "aliases": [],
+      "status": "model_checked",
+      "verification": "verification/acceptance-final-2026-09-24/valid-bound-2/result.json"
+    },
+    {
+      "canonical": "completedCount",
+      "kind": "VARIABLE",
+      "role": "ghost",
+      "meaning": "Persistent history count of completion-post events",
+      "domain": "0..MaxOperations",
+      "units": "events",
+      "owner": "CompleteCommand",
+      "initial": "0",
+      "reset": "preserved; no claim of persistent data implementation",
+      "sources": [
+        {
+          "requirement_id": "ASSUME-COMMAND",
+          "source_record": "examples/nvme-cc-enable/source.json"
+        }
+      ],
+      "model_refs": [
+        "examples/nvme-cc-enable/NVMeCCEnable.tla:completedCount"
+      ],
+      "aliases": [],
+      "status": "model_checked",
+      "verification": "verification/acceptance-final-2026-09-24/valid-bound-2/result.json"
+    },
+    {
+      "canonical": "cstsRdy",
+      "kind": "VARIABLE",
+      "role": "hardware",
+      "meaning": "Controller Status Ready bit",
+      "domain": "{0, 1}",
+      "units": "bit",
+      "owner": "controller",
+      "initial": "0",
+      "reset": "ControllerResetDone clears after ready to re-enable",
+      "sources": [
+        {
+          "requirement_id": "REQ-RDY",
+          "source_record": "examples/nvme-cc-enable/source.json"
+        }
+      ],
+      "model_refs": [
+        "examples/nvme-cc-enable/NVMeCCEnable.tla:cstsRdy"
+      ],
+      "aliases": [],
+      "status": "model_checked",
+      "verification": "verification/acceptance-final-2026-09-24/valid-bound-2/result.json"
+    },
+    {
+      "canonical": "processedCount",
+      "kind": "VARIABLE",
+      "role": "ghost",
+      "meaning": "Persistent history count of processing events",
+      "domain": "0..MaxOperations",
+      "units": "events",
+      "owner": "ProcessCommand",
+      "initial": "0",
+      "reset": "preserved; not a current-activity flag",
+      "sources": [
+        {
+          "requirement_id": "ASSUME-COMMAND",
+          "source_record": "examples/nvme-cc-enable/source.json"
+        }
+      ],
+      "model_refs": [
+        "examples/nvme-cc-enable/NVMeCCEnable.tla:processedCount"
+      ],
+      "aliases": [],
+      "status": "model_checked",
+      "verification": "verification/acceptance-final-2026-09-24/valid-bound-2/result.json"
+    }
+  ]
+}

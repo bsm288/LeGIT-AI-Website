@@ -1,0 +1,204 @@
+{
+  "all_passed": true,
+  "model_sha256": "8d07701c708dea32850613fafbbbce924facb7244a4f9ef31afb1f1cc4ac7fc7",
+  "config_sha256": "e3be586cf09c213679af4e7f7d496417528fcf513c883ecbd886352eeed00a43",
+  "dictionary_check": {
+    "declarations": 9,
+    "status": "PASS",
+    "source_hash_matches": null
+  },
+  "cases": [
+    {
+      "case": "valid-bound-1",
+      "expected": "PASS",
+      "actual": "PASS",
+      "test_passed": true,
+      "required_diagnostic": "No error has been found",
+      "states": {
+        "generated": 47,
+        "distinct": 28,
+        "remaining": 0
+      },
+      "evidence": "valid-bound-1/result.json"
+    },
+    {
+      "case": "valid-bound-2",
+      "expected": "PASS",
+      "actual": "PASS",
+      "test_passed": true,
+      "required_diagnostic": "No error has been found",
+      "states": {
+        "generated": 103,
+        "distinct": 60,
+        "remaining": 0
+      },
+      "evidence": "valid-bound-2/result.json"
+    },
+    {
+      "case": "valid-bound-3",
+      "expected": "PASS",
+      "actual": "PASS",
+      "test_passed": true,
+      "required_diagnostic": "No error has been found",
+      "states": {
+        "generated": 181,
+        "distinct": 104,
+        "remaining": 0
+      },
+      "evidence": "valid-bound-3/result.json"
+    },
+    {
+      "case": "valid-initial-config-b",
+      "expected": "PASS",
+      "actual": "PASS",
+      "test_passed": true,
+      "required_diagnostic": "No error has been found",
+      "states": {
+        "generated": 103,
+        "distinct": 60,
+        "remaining": 0
+      },
+      "evidence": "valid-initial-config-b/result.json"
+    },
+    {
+      "case": "reject-disabled-processing",
+      "expected": "ACTION_VIOLATION",
+      "actual": "ACTION_VIOLATION",
+      "test_passed": true,
+      "required_diagnostic": "NoWorkWhileDisabled",
+      "states": {
+        "generated": 2,
+        "distinct": 2,
+        "remaining": 0
+      },
+      "evidence": "reject-disabled-processing/result.json"
+    },
+    {
+      "case": "reject-disabled-completion",
+      "expected": "ACTION_VIOLATION",
+      "actual": "ACTION_VIOLATION",
+      "test_passed": true,
+      "required_diagnostic": "NoWorkWhileDisabled",
+      "states": {
+        "generated": 22,
+        "distinct": 15,
+        "remaining": 2
+      },
+      "evidence": "reject-disabled-completion/result.json"
+    },
+    {
+      "case": "reject-reset-config-loss",
+      "expected": "ACTION_VIOLATION",
+      "actual": "ACTION_VIOLATION",
+      "test_passed": true,
+      "required_diagnostic": "AdminPreservedOnReset",
+      "states": {
+        "generated": 7,
+        "distinct": 6,
+        "remaining": 1
+      },
+      "evidence": "reject-reset-config-loss/result.json"
+    },
+    {
+      "case": "reject-reset-completion-config-loss",
+      "expected": "ACTION_VIOLATION",
+      "actual": "ACTION_VIOLATION",
+      "test_passed": true,
+      "required_diagnostic": "AdminPreservedOnReset",
+      "states": {
+        "generated": 10,
+        "distinct": 8,
+        "remaining": 2
+      },
+      "evidence": "reject-reset-completion-config-loss/result.json"
+    },
+    {
+      "case": "reject-type-error",
+      "expected": "INVARIANT_VIOLATION",
+      "actual": "INVARIANT_VIOLATION",
+      "test_passed": true,
+      "required_diagnostic": "Invariant TypeOK is violated",
+      "states": {
+        "generated": 13,
+        "distinct": 10,
+        "remaining": 2
+      },
+      "evidence": "reject-type-error/result.json"
+    },
+    {
+      "case": "reject-semantic-error",
+      "expected": "ERROR",
+      "actual": "ERROR",
+      "test_passed": true,
+      "required_diagnostic": "Unknown operator",
+      "states": null,
+      "evidence": "reject-semantic-error/result.json"
+    },
+    {
+      "case": "reject-unjustified-progress",
+      "expected": "LIVENESS_VIOLATION",
+      "actual": "LIVENESS_VIOLATION",
+      "test_passed": true,
+      "required_diagnostic": "EnableEventuallyReady",
+      "states": {
+        "generated": 103,
+        "distinct": 60,
+        "remaining": 0
+      },
+      "evidence": "reject-unjustified-progress/result.json"
+    },
+    {
+      "case": "reject-unjustified-reset-progress",
+      "expected": "LIVENESS_VIOLATION",
+      "actual": "LIVENESS_VIOLATION",
+      "test_passed": true,
+      "required_diagnostic": "ResetEventuallyDone",
+      "states": {
+        "generated": 103,
+        "distinct": 60,
+        "remaining": 0
+      },
+      "evidence": "reject-unjustified-reset-progress/result.json"
+    },
+    {
+      "case": "reject-deadlock",
+      "expected": "DEADLOCK",
+      "actual": "DEADLOCK",
+      "test_passed": true,
+      "required_diagnostic": "Deadlock reached",
+      "states": {
+        "generated": 1,
+        "distinct": 1,
+        "remaining": 0
+      },
+      "evidence": "reject-deadlock/result.json"
+    },
+    {
+      "case": "witness-NoCompletionReached",
+      "expected": "INVARIANT_VIOLATION",
+      "actual": "INVARIANT_VIOLATION",
+      "test_passed": true,
+      "required_diagnostic": "Invariant NoCompletionReached is violated",
+      "states": {
+        "generated": 19,
+        "distinct": 13,
+        "remaining": 2
+      },
+      "evidence": "witness-NoCompletionReached/result.json"
+    },
+    {
+      "case": "witness-NoResetPendingReached",
+      "expected": "INVARIANT_VIOLATION",
+      "actual": "INVARIANT_VIOLATION",
+      "test_passed": true,
+      "required_diagnostic": "Invariant NoResetPendingReached is violated",
+      "states": {
+        "generated": 7,
+        "distinct": 6,
+        "remaining": 1
+      },
+      "evidence": "witness-NoResetPendingReached/result.json"
+    }
+  ],
+  "interpretation": "Negative tests and reachability probes intentionally fail TLC. Only valid-* cases are passing production configurations."
+}

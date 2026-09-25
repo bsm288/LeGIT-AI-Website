@@ -1,0 +1,9 @@
+# Python and disposable TLC working state created by the skill demos.
+__pycache__/
+*.pyc
+verification/local-*/
+/verification/rehearsal-1/
+/verification/acceptance-2026-09-24/
+/verification/cross-llm/
+examples/nvme-cc-enable/states/
+examples/nvme-cc-enable/*_TTrace_*

@@ -1,0 +1,30 @@
+TLC2 Version 2026.09.23.154203 (rev: 4260e47)
+Running breadth-first search Model-Checking with fp 0 and seed 1 with 1 worker on 16 cores with 455MB heap and 64MB offheap memory [pid: 32916] (Windows 11 10.0 amd64, Eclipse Adoptium 25.0.2 64bit, MSBDiskFPSet, DiskStateQueue).
+Parsing file C:\Users\aryan\AppData\Local\Temp\legit-tlc-7kjq5g82\NVMeCCEnable.tla
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-8631332831856589041\Naturals.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-8631332831856589041\FiniteSets.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-8631332831856589041\_TLCTrace.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/_TLCTrace.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-8631332831856589041\Sequences.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-8631332831856589041\TLC.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-8631332831856589041\TLCExt.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/TLCExt.tla)
+Parsing file C:\Users\aryan\AppData\Local\Temp\tlc-8631332831856589041\Integers.tla (jar:file:/C:/Users/aryan/.vscode/extensions/tlaplus.vscode-ide-2026.9.231551/tools/tla2tools.jar!/tla2sany/StandardModules/Integers.tla)
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module Integers
+Semantic processing of module TLCExt
+Semantic processing of module _TLCTrace
+Semantic processing of module NVMeCCEnable
+Semantic errors:
+
+*** Errors: 1
+
+line 24, col 11 to line 24, col 25 of module NVMeCCEnable
+
+Unknown operator: `MissingOperator'.
+
+
+Starting... (2026-09-24 23:37:33)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2026-09-24 23:37:33)

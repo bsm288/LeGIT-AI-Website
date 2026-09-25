@@ -511,6 +511,59 @@ section {
     opacity: 0.5;
 }
 
+/* Verification Evidence Section */
+.verification {
+    background: var(--light);
+}
+
+.verification-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.verification-card {
+    background: var(--white);
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.verification-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.verification-card h3 {
+    color: var(--dark);
+    font-size: 1.2rem;
+    margin: 14px 0 12px;
+}
+
+.verification-card p {
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.verification-link {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.verification-link:hover {
+    text-decoration: underline;
+}
+
+.verification-note {
+    color: var(--gray);
+    margin: 34px auto 0;
+    max-width: 850px;
+    text-align: center;
+}
+
 /* Team Section */
 /* Team member profile images - circular, card-like */
 .member-avatar-img {
@@ -731,6 +784,10 @@ section {
 
     .team-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .verification-grid {
+        grid-template-columns: 1fr;
     }
 
     .workflow-steps {

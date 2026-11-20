@@ -6,6 +6,9 @@
     <title>LegitCode | LeGIT/AI Project</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+.documents{background:var(--light)}.documents-video{display:grid;grid-template-columns:.8fr 1.2fr;gap:32px;align-items:center;background:var(--gradient-dark);padding:32px;border-radius:var(--radius-lg);margin:0 0 48px;box-shadow:var(--shadow)}.documents-video-copy{color:var(--white)}.documents-video h3{font-size:1.8rem;margin:10px 0}.documents-video p{color:#cbd5e1}.documents-label,.document-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.documents-label{color:#a5b4fc}.documents-video-frame{aspect-ratio:16/9;background:#000;border-radius:var(--radius);overflow:hidden}.documents-video-frame iframe{width:100%;height:100%;border:0;display:block}.documents-group+.documents-group{margin-top:42px}.documents-group>h3{margin-bottom:20px;font-size:1.35rem}.documents-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.document-card{display:flex;flex-direction:column;min-height:240px;padding:28px;background:var(--white);border:1px solid rgba(15,23,42,.08);border-radius:var(--radius);box-shadow:0 5px 20px rgba(15,23,42,.045)}.document-tag{align-self:flex-start;padding:5px 9px;border-radius:999px;color:var(--primary-dark);background:#eef2ff;letter-spacing:.04em}.document-card h4{margin:18px 0 10px;font-size:1.15rem}.document-card p{color:var(--gray);font-size:.93rem;line-height:1.7}.document-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:22px}.document-actions a,.documents-archive a{padding:9px 13px;border:1px solid #c7d2fe;border-radius:8px;color:var(--primary-dark);font-size:.84rem;font-weight:700;text-decoration:none}.document-actions a:hover,.documents-archive a:hover{color:var(--white);background:var(--primary);border-color:var(--primary)}.documents-archive{margin-top:42px;padding:0 24px 22px;background:var(--white);border:1px solid rgba(15,23,42,.1);border-radius:var(--radius)}.documents-archive summary{padding:20px 0;font-weight:700;cursor:pointer}.documents-archive p{margin:0 0 14px;color:var(--gray)}@media(max-width:1024px){.documents-video{grid-template-columns:1fr}.documents-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:768px){.documents-video{padding:24px}.documents-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -20,6 +23,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#verification">Verification</a></li>
+                <li><a href="#documents">Documents</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#sponsors">Sponsors</a></li>
             </ul>
@@ -277,6 +281,25 @@
                     <p class="university">Northern Arizona University</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Project Documents Section -->
+    <section id="documents" class="documents">
+        <div class="container">
+            <div class="section-header"><h2>Project Documents</h2><p>Requirements, design materials, presentations, and recorded design reviews from the LeGIT/AI capstone.</p></div>
+            <div class="documents-video"><div class="documents-video-copy"><span class="documents-label">Recorded presentation</span><h3>Design Review 2</h3><p>Watch the project presentation directly on this page.</p></div><div class="documents-video-frame"><iframe src="https://drive.google.com/file/d/11fqEdIHhX3Jn1zWyD9N_9ouHW_E46JIY/preview" title="LeGIT/AI Design Review 2 video" allow="autoplay" allowfullscreen></iframe></div></div>
+            <div class="documents-group"><h3>Current project documents</h3><div class="documents-grid">
+                <article class="document-card"><span class="document-tag">Version 1.2 · Client review</span><h4>Requirements Specification</h4><p>Revised requirements addressing the client’s Rust direction.</p><div class="document-actions"><a href="requirements-rust-review.pdf" target="_blank" rel="noopener">View PDF</a><a href="requirements-rust-review.docx" download>Word</a></div></article>
+                <article class="document-card"><span class="document-tag">Version 1.1 · September 2026</span><h4>Software Design Document</h4><p>Architecture, requirements mapping, traceability, TLA+/CFG generation, and TLC verification.</p><div class="document-actions"><a href="software-design-v1.1.pdf" target="_blank" rel="noopener">View PDF</a></div></article>
+                <article class="document-card"><span class="document-tag">Fall 2026</span><h4>Capstone Poster</h4><p>One-page overview of the project workflow, output examples, tools, and benefits.</p><div class="document-actions"><a href="capstone-poster.pdf" target="_blank" rel="noopener">View PDF</a><a href="capstone-poster.pptx" download>PowerPoint</a></div></article>
+            </div></div>
+            <div class="documents-group"><h3>Design reviews</h3><div class="documents-grid">
+                <article class="document-card"><span class="document-tag">Presentation</span><h4>Design Review 1</h4><p>Project context, proposed solution, key requirements, and development plan.</p><div class="document-actions"><a href="design-review-1.pdf" target="_blank" rel="noopener">View PDF</a><a href="design-review-1.pptx" download>PowerPoint</a></div></article>
+                <article class="document-card"><span class="document-tag">Presentation + video</span><h4>Design Review 2</h4><p>Prototype approach, progress, challenges, and review milestones.</p><div class="document-actions"><a href="design-review-2.pdf" target="_blank" rel="noopener">View PDF</a><a href="design-review-2.pptx" download>PowerPoint</a></div></article>
+                <article class="document-card"><span class="document-tag">Historical snapshot</span><h4>Design Review 3</h4><p>Slides from a prior implementation stage that may differ from later client decisions.</p><div class="document-actions"><a href="design-review-3.pdf" target="_blank" rel="noopener">View PDF</a><a href="design-review-3.pptx" download>PowerPoint</a></div></article>
+            </div></div>
+            <details class="documents-archive"><summary>Earlier design drafts</summary><p>Software Design Document, draft version 1.0 (September 14, 2026), superseded by version 1.1.</p><a href="software-design-draft-v1.0.pdf" target="_blank" rel="noopener">Open early design draft</a></details>
         </div>
     </section>
 
